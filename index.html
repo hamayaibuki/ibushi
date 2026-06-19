@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>Web制作学習システム</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="home-header">
+    <div class="nav">
+        <a href="tutorial.html">📖 遊びかたガイド</a>
+        <a href="example.html">🌟 完成例を見る</a>
+    </div>
+
+    <h1>Webデザイン・スタジオ</h1>
+    <p>自分だけの自己紹介サイトを作りながら、HTML/CSSを学ぼう</p>
+</header>
+
+<main class="container">
+    <div class="grid">
+
+        <div class="card" onclick="location.href='editor.html?id=0'">
+            <span class="lv-badge">ステップ01</span>
+            <h3>名前タイトルを作ろう</h3>
+            <p>自分の名前やサイトタイトルを大きく表示して、入口を作ります。</p>
+        </div>
+
+        <div class="card" onclick="location.href='editor.html?id=1'">
+            <span class="lv-badge">ステップ02</span>
+            <h3>自己紹介文を書こう</h3>
+            <p>文章ブロックを使って、自分のことを紹介する説明文を作ります。</p>
+        </div>
+
+        <div class="card" onclick="location.href='editor.html?id=2'">
+            <span class="lv-badge">ステップ03</span>
+            <h3>好きなものを紹介しよう</h3>
+            <p>箇条書きで、好きなことや趣味を3つ紹介します。</p>
+        </div>
+
+        <div class="card" onclick="location.href='editor.html?id=3'">
+            <span class="lv-badge">ステップ04</span>
+            <h3>プロフィール画像を入れよう</h3>
+            <p>画像を選んで、大きさ・位置・枠線色を調整します。</p>
+        </div>
+
+        <div class="card" onclick="location.href='editor.html?id=4'">
+            <span class="lv-badge">ステップ05</span>
+            <h3>カードデザインを覚えよう</h3>
+            <p>背景色・余白・角丸・影を組み合わせて、カード風デザインを作ります。</p>
+        </div>
+
+        <div class="card" onclick="location.href='editor.html?id=5'">
+            <span class="lv-badge">ステップ06</span>
+            <h3>SNS・おすすめリンクを作ろう</h3>
+            <p>リンクを使って、SNSやおすすめサイトに飛べるボタンを作ります。</p>
+        </div>
+
+        <div class="card free-card" onclick="location.href='editor.html?mode=free'">
+            <h2>自由制作モード</h2>
+            <p>好きなブロックを使って、自由にサイトを作ってみよう！</p>
+        </div>
+
+        <div class="card final-card" onclick="location.href='editor.html?mode=final'">
+            <h2>最終課題：自分だけの自己紹介サイトを作ろう</h2>
+            <p>正解はありません。満足できる作品ができたら完成です。</p>
+        </div>
+
+    </div>
+
+    <section class="form-card">
+        <h2>📝 利用後アンケート</h2>
+        <p>教材を使ってみた感想を入力してください。</p>
+
+        <iframe
+            class="form-frame"
+            src="https://docs.google.com/forms/d/e/1FAIpQLSdeeGcFJalqQbBMEAzqCqRzm6nGe49JGua5Q7h0Ec_OEzJiuQ/viewform?embedded=true">
+            読み込み中...
+        </iframe>
+    </section>
+</main>
+
+<footer>© 2026 北海道情報大学 卒業論文 - 濱屋</footer>
+
+</body>
+</html>

@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>使いかたガイド | Webデザイン・スタジオ</title>
+
+<style>
+:root{
+    --primary:#2c3e50;
+    --accent:#198754;
+    --blue:#4A90E2;
+    --bg:#f4f7f6;
+}
+
+body{
+    margin:0;
+    font-family:sans-serif;
+    line-height:1.8;
+    background:var(--bg);
+    color:#333;
+}
+
+header{
+    background:linear-gradient(135deg,#2c3e50,#34495e);
+    color:white;
+    padding:45px 20px;
+    text-align:center;
+}
+
+.container{
+    max-width:950px;
+    margin:30px auto;
+    background:white;
+    padding:40px;
+    border-radius:14px;
+    box-shadow:0 4px 12px rgba(0,0,0,.08);
+}
+
+.step{
+    margin-bottom:45px;
+}
+
+.step-num{
+    background:var(--accent);
+    color:white;
+    width:30px;
+    height:30px;
+    display:inline-flex;
+    justify-content:center;
+    align-items:center;
+    border-radius:50%;
+    margin-right:10px;
+    font-weight:bold;
+}
+
+.info{
+    background:#eef6ff;
+    border-left:5px solid var(--blue);
+    padding:18px;
+    border-radius:8px;
+    margin-top:15px;
+}
+
+.example{
+    background:#f6f6f6;
+    padding:15px;
+    border-radius:8px;
+    margin-top:10px;
+}
+
+.card-list{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+    gap:16px;
+    margin-top:20px;
+}
+
+.guide-card{
+    border:1px solid #ddd;
+    border-radius:12px;
+    padding:18px;
+    background:#fafafa;
+}
+
+.guide-card h3{
+    margin-top:0;
+    color:#2c3e50;
+}
+
+.color-card{
+    border-radius:10px;
+    color:white;
+    padding:18px;
+    text-align:center;
+    font-weight:bold;
+}
+
+.profile-preview{
+    text-align:center;
+    padding:25px;
+    border:1px solid #ddd;
+    border-radius:14px;
+    background:#fff;
+}
+
+.profile-preview img{
+    width:120px;
+    height:120px;
+    object-fit:cover;
+    border-radius:50%;
+    border:3px solid var(--blue);
+}
+
+.btn{
+    display:block;
+    width:260px;
+    margin:40px auto 0;
+    text-align:center;
+    background:#198754;
+    color:white;
+    text-decoration:none;
+    padding:15px;
+    border-radius:40px;
+    font-size:18px;
+    font-weight:bold;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>📖 Webデザイン・スタジオ 使いかたガイド</h1>
+    <p>自己紹介サイトを作りながら、HTML/CSSを学ぼう</p>
+</header>
+
+<div class="container">
+
+    <div class="step">
+        <h2><span class="step-num">1</span>基本の考え方</h2>
+        <p>
+            この教材では、ブロックを組み合わせて自己紹介サイトを作ります。
+            左側でブロックを組み立てると、右側のプレビューにすぐ反映されます。
+        </p>
+
+        <div class="info">
+            <strong>中身</strong>には、見出し・文章・画像・リンクなどを入れます。<br>
+            <strong>見た目</strong>には、文字色・背景色・余白・角丸などのCSSブロックを入れます。
+        </div>
+    </div>
+
+    <div class="step">
+        <h2><span class="step-num">2</span>自己紹介サイトの基本構成(例)</h2>
+
+        <p>最終的には、次のような構成を目指します。</p>
+
+        <div class="example">
+            ページ幅を整える<br>
+            　└ 中央配置<br>
+            　　　└ プロフィール画像<br>
+            　　　└ 名前タイトル<br>
+            　└ セクション「自己紹介」<br>
+            　└ セクション「好きなこと」<br>
+            　└ セクション「趣味」<br>
+            　└ SNS・おすすめリンク
+        </div>
+    </div>
+
+    <div class="step">
+        <h2><span class="step-num">3</span>プロフィール画像を調整する</h2>
+
+        <p>
+            「プロフィール画像」ブロックでは、画像URLだけでなく、
+            大きさ・横位置・上下の余白も変更できます。
+        </p>
+
+        <div class="card-list">
+            <div class="guide-card">
+                <h3>画像URL</h3>
+                <p>表示したい画像のURLを入力します。</p>
+            </div>
+
+            <div class="guide-card">
+                <h3>大きさ</h3>
+                <p>例：100px、150px、200px。数字が大きいほど画像が大きくなります。</p>
+            </div>
+
+            <div class="guide-card">
+                <h3>横位置</h3>
+                <p>左・中央・右から選べます。</p>
+            </div>
+
+            <div class="guide-card">
+                <h3>上下の余白</h3>
+                <p>画像の上や下に空白を作れます。例：20px、30px。</p>
+            </div>
+        </div>
+
+        <div class="profile-preview">
+            <img src="https://placehold.jp/300x300.png" alt="プロフィール画像">
+            <h3>プロフィール画像の例</h3>
+            <p>丸い画像にして、自己紹介サイトらしい見た目にできます。</p>
+        </div>
+    </div>
+
+    <div class="step">
+        <h2><span class="step-num">4</span>カードの使い方</h2>
+
+        <p>
+            カードブロックを使うと、情報をまとまりごとに分けられます。
+            自己紹介サイトを見やすくするために便利です。
+        </p>
+
+        <div class="card-list">
+            <div class="guide-card">
+                <h3>プロフィールカード</h3>
+                <p>名前、学科、自己紹介文などをまとめるカードです。</p>
+            </div>
+
+            <div class="guide-card">
+                <h3>趣味カード</h3>
+                <p>好きなことや趣味を紹介するときに使います。</p>
+            </div>
+
+            <div class="guide-card">
+                <h3>スキルカード</h3>
+                <p>勉強していることや得意なことを書けます。</p>
+            </div>
+
+            <div class="guide-card">
+                <h3>SNSカード</h3>
+                <p>SNSやおすすめサイトへのリンクをまとめられます。</p>
+            </div>
+
+            <div class="guide-card">
+                <h3>画像つきカード</h3>
+                <p>画像と文章をセットで表示できます。</p>
+            </div>
+
+            <div class="guide-card">
+                <h3>2列レイアウト</h3>
+                <p>画像と文章などを左右に並べたいときに使います。</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="step">
+        <h2><span class="step-num">5</span>セクションと箇条書き</h2>
+
+        <p>
+            「自己紹介」「好きなこと」「趣味」のように区切りたいときは、
+            セクションブロックを使います。
+        </p>
+
+        <div class="example">
+            セクション「好きなこと」<br>
+            　└ 箇条書きリスト<br>
+            　　　└ 項目「食べること」<br>
+            　　　└ 項目「ライブに行くこと」<br>
+            　　　└ 項目「人と話すこと」
+        </div>
+    </div>
+
+    <div class="step">
+        <h2><span class="step-num">6</span>よく使うカラーコード</h2>
+
+        <p>文字色・背景色・線の色などに使えます。</p>
+
+        <div class="card-list">
+            <div class="color-card" style="background:#ff0000;">赤<br>#ff0000</div>
+            <div class="color-card" style="background:#0000ff;">青<br>#0000ff</div>
+            <div class="color-card" style="background:#4A90E2;">水色<br>#4A90E2</div>
+            <div class="color-card" style="background:#008000;">緑<br>#008000</div>
+            <div class="color-card" style="background:#ff69b4;">ピンク<br>#ff69b4</div>
+            <div class="color-card" style="background:#ffa500;">オレンジ<br>#ffa500</div>
+            <div class="color-card" style="background:#800080;">紫<br>#800080</div>
+            <div class="color-card" style="background:#808080;">グレー<br>#808080</div>
+            <div class="color-card" style="background:#000000;">黒<br>#000000</div>
+            <div class="color-card" style="background:#ffffff;color:#333;border:1px solid #ddd;">白<br>#ffffff</div>
+        </div>
+    </div>
+
+    <div class="step">
+        <h2><span class="step-num">7</span>最終課題</h2>
+
+        <p>
+            最終課題では、完成例のような自己紹介サイトを作ります。
+        </p>
+
+        <div class="info">
+            入れるとよい内容：<br>
+            ・プロフィール画像<br>
+            ・名前タイトル<br>
+            ・自己紹介文<br>
+            ・好きなこと<br>
+            ・趣味<br>
+            ・SNSやおすすめサイトへのリンク<br>
+            ・区切り線やセクション
+        </div>
+    </div>
+
+    <a class="btn" href="index.html">学習を始める</a>
+
+</div>
+
+</body>
+</html>
