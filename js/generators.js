@@ -4,13 +4,13 @@ const gen = javascript.javascriptGenerator;
    テキスト生成
 ========================= */
 
-gen.forBlock["text"] = function (block) {
+const gen = javascript.javascriptGenerator;
 
+gen.forBlock["text"] = function (block) {
     return [
         block.getFieldValue("TEXT"),
         javascript.Order.ATOMIC
     ];
-
 };
 
 /* =========================
