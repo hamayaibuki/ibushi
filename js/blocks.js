@@ -1,4 +1,3 @@
-```javascript
 Blockly.Blocks["html_page_container"] = {
     init: function () {
         this.appendDummyInput()
@@ -283,7 +282,6 @@ Blockly.Blocks["text"] = {
     }
 
 };
-```
 Blockly.Blocks["html_a"] = {
 
     init: function () {
