@@ -1,486 +1,286 @@
 <!DOCTYPE html>
 <html lang="ja">
-
 <head>
-
 <meta charset="UTF-8">
-
-<meta name="viewport"
-content="width=device-width,
-initial-scale=1.0">
-
-<title>
-Webデザイン・スタジオ
-</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Webデザイン・スタジオ</title>
 
 <script src="https://unpkg.com/blockly/blockly.min.js"></script>
 <script src="https://unpkg.com/blockly/javascript_compressed.js"></script>
-
 <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
 
 <style>
-
-*{
-box-sizing:border-box;
+* {
+    box-sizing: border-box;
 }
 
 html,
-body{
-
-margin:0;
-
-height:100%;
-
-overflow:hidden;
-
-font-family:sans-serif;
-
-background:#252a34;
-
-color:white;
-
+body {
+    margin: 0;
+    height: 100%;
+    overflow: hidden;
+    font-family: sans-serif;
+    background: #252a34;
+    color: white;
 }
 
-header{
-
-height:60px;
-
-background:#15191f;
-
-display:flex;
-
-align-items:center;
-
-justify-content:space-between;
-
-padding:0 20px;
-
+header {
+    height: 60px;
+    background: #15191f;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
 }
 
-header h2{
-
-margin:0;
-
-font-size:18px;
-
+header h2 {
+    margin: 0;
+    font-size: 20px;
 }
 
-#clear-status{
-
-background:#444;
-
-padding:6px 14px;
-
-border-radius:20px;
-
-font-size:12px;
-
+#clear-status {
+    background: #444;
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 14px;
 }
 
-.main{
-
-display:flex;
-
-height:calc(100vh - 60px);
-
+.main {
+    display: flex;
+    height: calc(100vh - 60px);
 }
 
-#blockly-area{
-
-width:67%;
-
-min-width:300px;
-
-height:100%;
-
+#blockly-area {
+    width: 67%;
+    min-width: 300px;
+    height: 100%;
 }
 
-#blockly-div{
-
-width:100%;
-
-height:100%;
-
+#blockly-div {
+    width: 100%;
+    height: 100%;
 }
 
-#dragbar{
-
-width:6px;
-
-cursor:col-resize;
-
-background:#444;
-
-flex-shrink:0;
-
+#dragbar {
+    width: 6px;
+    cursor: col-resize;
+    background: #444;
+    flex-shrink: 0;
 }
 
-#dragbar:hover{
-
-background:#61dafb;
-
+#dragbar:hover {
+    background: #61dafb;
 }
 
-.right-panel{
-
-width:33%;
-
-min-width:380px;
-
-display:flex;
-
-flex-direction:column;
-
-border-left:1px solid #333;
-
-overflow-y:auto;
-
-background:#1f2633;
-
+.right-panel {
+    width: 33%;
+    min-width: 380px;
+    display: flex;
+    flex-direction: column;
+    border-left: 1px solid #333;
+    background: #1f2633;
 }
 
-.learning-panel{
-
-background:#202632;
-
-border-bottom:1px solid #333;
-
-padding:12px 15px;
-
-font-size:13px;
-
-line-height:1.6;
-
-max-height:380px;
-
-overflow-y:auto;
-
-flex-shrink:0;
-
+.learning-panel {
+    background: #202632;
+    border-bottom: 1px solid #333;
+    padding: 14px 16px;
+    font-size: 14px;
+    line-height: 1.7;
+    max-height: 360px;
+    overflow-y: auto;
+    flex-shrink: 0;
 }
 
-.learning-panel h3{
-
-margin:0 0 8px;
-
-font-size:15px;
-
-color:#61dafb;
-
+.learning-panel h3 {
+    margin: 0 0 10px;
+    font-size: 18px;
+    color: #61dafb;
 }
 
-.learning-row{
-
-margin:4px 0;
-
+.learning-row {
+    margin: 6px 0;
 }
 
-.learning-label{
-
-display:inline-block;
-
-color:#ffd166;
-
-font-weight:bold;
-
-min-width:70px;
-
+.learning-label {
+    display: inline-block;
+    color: #ffd166;
+    font-weight: bold;
+    min-width: 80px;
 }
 
-.hint-box{
-
-margin-top:8px;
-
-padding:8px;
-
-background:#2f3a4d;
-
-border-radius:8px;
-
-color:#dbeafe;
-
+.hint-box {
+    margin-top: 10px;
+    padding: 10px;
+    background: #2f3a4d;
+    border-radius: 8px;
+    color: #dbeafe;
 }
 
-.reflection-box{
-
-margin-top:8px;
-
-padding:8px;
-
-background:#1f3d2b;
-
-border-radius:8px;
-
-color:#c7f9cc;
-
-display:none;
-
+.reflection-box {
+    margin-top: 10px;
+    padding: 10px;
+    background: #1f3d2b;
+    border-radius: 8px;
+    color: #c7f9cc;
+    display: none;
 }
 
-.finish-box{
-
-margin-top:8px;
-
-display:none;
-
+.finish-box {
+    margin-top: 10px;
+    display: none;
 }
 
-.finish-box button{
-
-padding:8px 14px;
-
-background:#f39c12;
-
-color:white;
-
-border:none;
-
-border-radius:999px;
-
-cursor:pointer;
-
-font-weight:bold;
-
+.finish-box button {
+    padding: 8px 16px;
+    background: #f39c12;
+    color: white;
+    border: none;
+    border-radius: 999px;
+    cursor: pointer;
+    font-weight: bold;
 }
 
-.survey-link{
-
-margin-top:10px;
-
-display:none;
-
+.survey-link {
+    margin-top: 10px;
+    display: none;
 }
 
-.survey-link a{
-
-color:#61dafb;
-
-font-weight:bold;
-
+.survey-link a {
+    color: #61dafb;
+    font-weight: bold;
 }
 
-.label{
-
-background:#333;
-
-padding:8px 15px;
-
-color:#aaa;
-
-font-size:12px;
-
+.label {
+    background: #333;
+    padding: 8px 15px;
+    color: #aaa;
+    font-size: 13px;
+    flex-shrink: 0;
 }
 
-.preview-toolbar{
-
-background:#ddd;
-
-padding:10px;
-
-text-align:center;
-
+.preview-toolbar {
+    background: #ddd;
+    padding: 10px;
+    text-align: center;
+    flex-shrink: 0;
 }
 
-.preview-toolbar button{
-
-padding:6px 10px;
-
-margin:3px;
-
-cursor:pointer;
-
-border:1px solid #aaa;
-
-border-radius:5px;
-
-background:white;
-
-font-size:13px;
-
+.preview-toolbar button {
+    padding: 7px 12px;
+    margin: 4px;
+    cursor: pointer;
+    border: 1px solid #aaa;
+    border-radius: 6px;
+    background: white;
+    font-size: 14px;
 }
 
-.preview-area{
-
-flex:1;
-
-background:#eee;
-
-padding:15px;
-
-display:flex;
-
-justify-content:center;
-
-min-height:300px;
-
+.preview-area {
+    flex: 1;
+    background: #eee;
+    padding: 15px;
+    min-height: 0;
 }
 
-iframe{
-
-width:100%;
-
-height:100%;
-
-border:none;
-
-background:white;
-
-border-radius:10px;
-
+iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    background: white;
+    border-radius: 10px;
 }
 
-.code-area{
-
-height:180px;
-
-background:#1e1e1e;
-
+.hidden-code {
+    display: none;
 }
-
-textarea{
-
-width:100%;
-
-height:100%;
-
-resize:none;
-
-border:none;
-
-outline:none;
-
-background:transparent;
-
-color:#9cdcfe;
-
-padding:10px;
-
-font-family:monospace;
-
-font-size:12px;
-
-}
-
 </style>
-
 </head>
 
 <body>
 
 <header>
+    <div onclick="location.href='index.html'" style="cursor:pointer;">
+        ← 戻る
+    </div>
 
-<div
-onclick="location.href='index.html'"
-style="cursor:pointer">
+    <h2 id="mission-title">Webデザイン・スタジオ</h2>
 
-← 戻る
-
-</div>
-
-<h2 id="mission-title">
-
-Webデザイン・スタジオ
-
-</h2>
-
-<div id="clear-status">
-
-準備OK
-
-</div>
-
+    <div id="clear-status">準備OK</div>
 </header>
 
 <div class="main">
 
-<div id="blockly-area">
+    <div id="blockly-area">
+        <div id="blockly-div"></div>
+    </div>
 
-<div id="blockly-div"></div>
+    <div id="dragbar"></div>
 
-</div>
+    <div class="right-panel">
 
-<div id="dragbar"></div>
+        <div class="learning-panel">
+            <h3>今日の学習</h3>
 
-<div class="right-panel">
+            <div class="learning-row">
+                <span class="learning-label">目標</span>
+                <span id="goal-text">読み込み中...</span>
+            </div>
 
-<div class="learning-panel">
+            <div class="learning-row">
+                <span class="learning-label">学ぶこと</span>
+                <span id="learn-text">読み込み中...</span>
+            </div>
 
-<h3>
+            <div class="learning-row">
+                <span class="learning-label">理由</span>
+                <span id="reason-text">読み込み中...</span>
+            </div>
 
-今日の学習
+            <div class="hint-box">
+                💡 ヒント：<span id="hint-text">読み込み中...</span>
+            </div>
 
-</h3>
+            <div class="reflection-box" id="reflection-box">
+                ✅ 振り返り：<span id="reflection-text"></span>
+            </div>
 
-<div class="learning-row">
-    <span class="learning-label">目標</span>
-    <span id="goal-text">読み込み中...</span>
-</div>
+            <div class="finish-box" id="finish-box">
+                <button onclick="finishFinalWork()">🎉 完成しました！</button>
+            </div>
 
-<div class="learning-row">
-    <span class="learning-label">学ぶこと</span>
-    <span id="learn-text">読み込み中...</span>
-</div>
+            <div class="survey-link" id="survey-link">
+                📝
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSdeeGcFJalqQbBMEAzqCqRzm6nGe49JGua5Q7h0Ec_OEzJiuQ/viewform" target="_blank">
+                    利用後アンケートに回答する
+                </a>
+            </div>
+        </div>
 
-<div class="learning-row">
-    <span class="learning-label">理由</span>
-    <span id="reason-text">読み込み中...</span>
-</div>
+        <div class="label">プレビュー</div>
 
-<div class="hint-box">
-    💡 ヒント：<span id="hint-text">読み込み中...</span>
-</div>
+        <div class="preview-toolbar">
+            <button onclick="openPreviewWindow()">🌐 大きく表示</button>
+            <button onclick="openExample()">🌟 完成例を見る</button>
+            <button onclick="chooseProfileImage()">🖼 画像選択</button>
+            <button onclick="copyGeneratedCode()">📋 HTMLコピー</button>
+            <button onclick="resetWorkspace()">🗑 リセット</button>
 
-<div class="reflection-box" id="reflection-box">
-    ✅ 振り返り：<span id="reflection-text"></span>
-</div>
+            <input
+                type="file"
+                id="profile-image-input"
+                accept="image/*"
+                style="display:none;"
+            >
+        </div>
 
-<div class="finish-box" id="finish-box">
-    <button onclick="finishFinalWork()">🎉 完成しました！</button>
-</div>
+        <div class="preview-area">
+            <iframe id="preview"></iframe>
+        </div>
 
-<div class="survey-link" id="survey-link">
+        <textarea id="combined-code" class="hidden-code" readonly></textarea>
 
-<div class="finish-box" id="finish-box">
-    <button onclick="finishFinalWork()">🎉 完成しました！</button>
-</div>
-
-<div class="survey-link" id="survey-link">
-    📝
-    <a href="https://docs.google.com/forms/d/e/1FAIpQLSdeeGcFJalqQbBMEAzqCqRzm6nGe49JGua5Q7h0Ec_OEzJiuQ/viewform" target="_blank">
-        利用後アンケートに回答する
-    </a>
-</div>
-
-</div>
-
-<div class="label">プレビュー</div>
-
-<div class="preview-toolbar">
-    <button onclick="openPreviewWindow()">🌐 大きく表示</button>
-    <button onclick="chooseProfileImage()">🖼 画像選択</button>
-    <button onclick="copyGeneratedCode()">📋 HTMLコピー</button>
-    <button onclick="resetWorkspace()">🗑 リセット</button>
-
-    <input
-        type="file"
-        id="profile-image-input"
-        accept="image/*"
-        style="display:none;"
-    >
-</div>
-
-<div class="preview-area">
-    <iframe id="preview"></iframe>
-</div>
-
-<div class="label">生成コード</div>
-
-<div class="code-area">
-    <textarea id="combined-code" readonly></textarea>
-</div>
-
-</div>
-
+    </div>
 </div>
 
 <xml id="toolbox" style="display:none">
@@ -529,10 +329,10 @@ Webデザイン・スタジオ
 
 </xml>
 
-<script src="js/missions.js?v=2"></script>
-<script src="js/blocks.js?v=2"></script>
-<script src="js/generators.js?v=2"></script>
-<script src="js/editor.js?v=2"></script>
+<script src="js/missions.js?v=3"></script>
+<script src="js/blocks.js?v=3"></script>
+<script src="js/generators.js?v=3"></script>
+<script src="js/editor.js?v=3"></script>
 
 </body>
 </html>
